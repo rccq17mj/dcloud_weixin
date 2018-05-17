@@ -1,0 +1,20 @@
+{
+    "tabBar": [
+        {
+            "title": "首页",
+            "icon": "url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat",
+            "selectedIcon": "url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat",
+            "path": "/",
+            "key": "home",
+            "badge": 0
+        },
+        {
+            "title": "购物车",
+            "icon":  {"uri": "https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg"},
+            "selectedIcon": {"uri": "https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg"},
+            "path": "/Cart",
+            "key": "Cart",
+            "badge": 2
+        }
+    ]
+}
