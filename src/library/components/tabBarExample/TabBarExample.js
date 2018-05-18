@@ -9,14 +9,13 @@ class TabBarExample extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab:  this.props.router[0].key,
+            selectedTab:  this.props.exact?this.props.exact : this.props.router[0].key,
             hidden: false,
             iconStyle: { width: '22px', height: '22px'}
         };
     }
 
     getComponent(item) {
-        console.log(item.component);
         if(this.props.path == null){
             return item.component
         }else
@@ -24,33 +23,45 @@ class TabBarExample extends React.Component {
     }
 
     getTabBar() {
-        return  this.props.router.map((item) =>
-            <TabBar.Item
-                title={item.title}
-                key={item.key}
-                icon= { typeof(item.icon) === 'string'?  <div style={ Object.assign({}, this.state.iconStyle,{
-                    background: item.icon })}
-                /> : item.icon }
-                selectedIcon={typeof(item.selectedIcon) === 'string'? <div style={ Object.assign({},this.state.iconStyle,{
-                    background: item.selectedIcon })}
-                />: item.selectedIcon }
-                selected={this.state.selectedTab === item.key}
-                badge={item.badge}
-                onPress={() => {
-                    this.setState({selectedTab:item.key})
-                    if(this.props.history != null)
-                        this.props.history.push(item.path)
-                }}
-                data-seed="logId"
-            >
-            </TabBar.Item>
+        return  this.props.router.map((item) => {
+            return (
+                    <TabBar.Item
+                        title={item.title}
+                        key={item.key}
+                        icon={ typeof(item.icon) === 'string' ? <div style={ Object.assign({}, this.state.iconStyle, {
+                            background: item.icon
+                        })}
+                        /> : item.icon }
+                        selectedIcon={typeof(item.selectedIcon) === 'string' ?
+                            <div style={ Object.assign({}, this.state.iconStyle, {
+                                background: item.selectedIcon
+                            })}
+                            /> : item.selectedIcon }
+                        selected={this.state.selectedTab === item.key}
+                        badge={item.badge}
+                        onPress={() => {
+                            this.setState({selectedTab: item.key});
+                            if (this.props.history != null)
+                                this.props.history.push(item.path)
+                        }}
+                        data-seed="logId"
+                    >
+                    </TabBar.Item>
+                )
+            }
         )
     }
 
     getRoute() {
         return (<Switch>
-            {this.props.router.map((item,index) => (
-                <Route path={item.path} exact={this.state.selectedTab === item.key ? true :false} component={item.component}></Route>)
+            {this.props.router.map((item,index) => {
+                if(item.path != null){
+                    if(item.path == this.props.history.location.pathname) {
+                        this.state.selectedTab = item.key;
+                    }
+                    return <Route path={item.path} exact component={item.component}></Route>
+                }
+            }
             )}
         </Switch>);
     }
@@ -98,8 +109,6 @@ TabBarExample.propTypes = {
         key: PropTypes.string.isRequired,
         // 消息提醒（数字）
         badge: PropTypes.number.isRequired,
-    }],
-    //默认选中
-    selectedTab: PropTypes.string
+    }]
 }
 export default TabBarExample;

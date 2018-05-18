@@ -1,5 +1,5 @@
 import React from 'react';
-import TabBarExamples from "../../base/components/tabBarExample/TabBarExample"
+import TabBarExamples from "../../library/components/tabBarExample/TabBarExample"
 import Cart from "../../pages/main/cart/cart"
 import Home from "../../pages/main/home/home"
 
@@ -8,7 +8,7 @@ var menu = [
         title: "首页",
         icon: "url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat",
         selectedIcon: "url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat",
-        path: "/home",
+        path: "/",
         key: "home",
         component: Home,
         badge: 0
@@ -27,7 +27,7 @@ var menu = [
 class MainRouting extends React.Component {
     render() {
         return (
-                <TabBarExamples history={this.props.history} router={menu} ></TabBarExamples>
+                <TabBarExamples history={this.props.history} router={menu} exact='cart' ></TabBarExamples>
         );
     }
 }
