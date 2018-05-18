@@ -16,7 +16,7 @@
     "superagent": "^3.8.3"
   },
   "theme": {
-    "brand-primary": "red",
+    "brand-primary": "#e7572f",
     "color-text-base": "#333"
   },
   "scripts": {

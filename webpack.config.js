@@ -2,6 +2,8 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var proxy = require('http-proxy-middleware');
+const theme = require('./package.json').theme;
+const path = require("path")
 
 module.exports = {
     devtool: 'source-map',
@@ -43,7 +45,12 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                loader: 'style-loader!css-loader!postcss-loader!less-loader'
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {loader: 'less-loader', options: {modifyVars: theme}},
+                ],
+                include: [/node_modules/,path.resolve(__dirname,"src")]
             },
             { test: /\.scss$/, loaders: ['style-loader', 'css-loader?modules&localIdentName=[name]-[local]', 'postcss-loader', 'sass-loader'] },
             { test: /\.(png|jpg|jpeg|gif)$/,
@@ -63,7 +70,7 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./public/index.html",
             filename: "./index.html",
-            favicon:'./public/favicon.ico'
+            favicon:'./public/favicon.ico',
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",

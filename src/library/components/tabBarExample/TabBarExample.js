@@ -2,7 +2,7 @@ import React from 'react';
 import { TabBar } from 'antd-mobile';
 import PropTypes from  'prop-types';
 import { Switch , Route } from 'react-router-dom';
-
+import './TabBarExample.less';
 
 class TabBarExample extends React.Component {
 
@@ -16,10 +16,13 @@ class TabBarExample extends React.Component {
     }
 
     getComponent(item) {
-        if(this.props.path == null){
-            return item.component
-        }else
+        if(!item.path){
+            return React.createElement(item.component) ;
+        }
+        else{
+            window.console.log(item.path);
             return null;
+        }
     }
 
     getTabBar() {
@@ -38,14 +41,15 @@ class TabBarExample extends React.Component {
                             })}
                             /> : item.selectedIcon }
                         selected={this.state.selectedTab === item.key}
-                        badge={item.badge}
+                        badge={!item.badge? 0 : item.badge}
                         onPress={() => {
                             this.setState({selectedTab: item.key});
-                            if (this.props.history != null)
+                            if (this.props.history)
                                 this.props.history.push(item.path)
                         }}
                         data-seed="logId"
                     >
+                        {this.getComponent(item)}
                     </TabBar.Item>
                 )
             }
@@ -91,24 +95,34 @@ TabBarExample.propTypes = {
     router: [{
         // 菜单名
         title: PropTypes.string.isRequired,
-        // 图标
+        /**
+         * 图标
+         * //css-svg icon：url(https:***.svg) center center /  21px 21px no-repeat
+         * //css-img icon："url(http://misc.gogbuy.com/images/v/d_bottombar_01.gif) 0 0 /120% 120%"
+         * //obj icon：{"uri": "https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg"}
+         */
         icon: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.object
         ]),
-        // 图标选中时e
+        /**
+         * 图标选中时
+         * //css-svg icon：url(https:***.svg) center center /  21px 21px no-repeat
+         * //css-img icon："url(http://misc.gogbuy.com/images/v/d_bottombar_01.gif) 0 0 /120% 120%"
+         * //obj icon：{"uri": "https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg"}
+         */
         selectedIcon: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.object
         ]),
-        // 路由地址
+        // 路由地址，如果不使用路由方式则不需要此项参数
         path: PropTypes.string,
         // 渲染页面
         component: PropTypes.element,
         // 唯一码
         key: PropTypes.string.isRequired,
         // 消息提醒（数字）
-        badge: PropTypes.number.isRequired,
+        badge: PropTypes.number,
     }]
 }
 export default TabBarExample;

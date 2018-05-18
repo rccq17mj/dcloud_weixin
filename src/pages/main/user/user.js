@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-class Cart extends Component {
+class User extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-           <div>cart</div>
+            <div>User</div>
         )
     }
 }
 
-export default Cart;
+export default User;
