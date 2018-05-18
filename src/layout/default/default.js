@@ -9,10 +9,8 @@ class Default extends Component {
     render() {
         return (
             <div className="Default" style={{ backgroundColor: 'white', height: '100%', width: '100%', textAlign: 'center', position: 'fixed'  }}>
-
                     <Route path="/" component={MainRouting}>
                     </Route>
-
             </div>
         );
     }

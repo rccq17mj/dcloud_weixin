@@ -17,7 +17,7 @@ class TabBarExample extends React.Component {
 
     getComponent(item) {
         console.log(item.component);
-        if(this.props.history == null){
+        if(this.props.path == null){
             return item.component
         }else
             return null;
@@ -43,15 +43,14 @@ class TabBarExample extends React.Component {
                 }}
                 data-seed="logId"
             >
-                {this.getComponent(item)}
             </TabBar.Item>
         )
     }
 
     getRoute() {
-        console.log("router",this.props)
         return (<Switch>
-            {this.props.router.map((item) => (<Route path={item.path} exact component={item.component}></Route>)
+            {this.props.router.map((item,index) => (
+                <Route path={item.path} exact={this.state.selectedTab === item.key ? true :false} component={item.component}></Route>)
             )}
         </Switch>);
     }
@@ -99,6 +98,8 @@ TabBarExample.propTypes = {
         key: PropTypes.string.isRequired,
         // 消息提醒（数字）
         badge: PropTypes.number.isRequired,
-    }]
+    }],
+    //默认选中
+    selectedTab: PropTypes.string
 }
 export default TabBarExample;

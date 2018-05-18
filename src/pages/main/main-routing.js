@@ -8,7 +8,7 @@ var menu = [
         title: "首页",
         icon: "url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat",
         selectedIcon: "url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat",
-        path: "/",
+        path: "/home",
         key: "home",
         component: Home,
         badge: 0
@@ -26,11 +26,8 @@ var menu = [
 
 class MainRouting extends React.Component {
     render() {
-        console.log(" mian props",this.props)
         return (
-            <div className="MainRouting" style={{ backgroundColor: 'white', height: '100%', width: '100%', textAlign: 'center', position: 'fixed'  }}>
-                <TabBarExamples history={this.props.history} router={menu}></TabBarExamples>
-            </div>
+                <TabBarExamples history={this.props.history} router={menu} ></TabBarExamples>
         );
     }
 }
