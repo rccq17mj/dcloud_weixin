@@ -1,8 +1,8 @@
 import React from 'react';
-import TabBarExamples from "../../library/components/tabBarExample/TabBarExample";
-import Cart from "../../pages/main/cart/cart";
-import Home from "../../pages/main/home/home";
-import User from "../../pages/main/user/user";
+import TabBarExamples from "../../dsykit/tabBarExample/TabBarExample";
+import Cart from "cart/index";
+import Home from "index";
+import User from "user/index";
 
 var menu = [
     {

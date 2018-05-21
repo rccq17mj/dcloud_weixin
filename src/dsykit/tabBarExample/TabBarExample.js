@@ -3,14 +3,14 @@ import { TabBar } from 'antd-mobile';
 import PropTypes from  'prop-types';
 import { Switch , Route } from 'react-router-dom';
 import './TabBarExample.less';
+import router from 'umi/router';
+
 
 class TabBarExample extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab:  this.props.exact?this.props.exact : this.props.router[0].key,
-            hidden: false,
             iconStyle: { width: '22px', height: '22px'}
         };
     }
