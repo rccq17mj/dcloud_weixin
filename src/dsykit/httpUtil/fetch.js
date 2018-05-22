@@ -8,6 +8,7 @@ import HttpConfig from "./httpConfig"
 class FetchUtil extends HttpConfig{
 
   constructor(opt){
+    super(opt)
     this.req = {
       method: "GET",
       credentials: 'include',
