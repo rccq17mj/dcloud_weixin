@@ -8,7 +8,8 @@
     "react-scripts": "^1.1.4",
     "superagent": "^3.8.3",
     "umi": "^1.3.3",
-    "umi-plugin-dva": "^0.7.2"
+    "umi-plugin-dva": "^0.7.2",
+    "whatwg-fetch": "^2.0.4"
   },
   "theme": {
     "brand-primary": "#e7572f",

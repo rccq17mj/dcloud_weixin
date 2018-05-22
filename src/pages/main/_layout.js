@@ -10,6 +10,7 @@ export default class Layout extends React.Component{
     super(props);
     this.state = {
       iconStyle: { width: '22px', height: '22px'},
+      selectedTab:"home",
       bars:[
         {
           title: "首页",
@@ -40,6 +41,11 @@ export default class Layout extends React.Component{
     }
   }
 
+  handleTabClick(item){
+    this.setState({selectedTab: item.key});
+    Router.push(item.path)
+  }
+
   getTabBar() {
     return  this.state.bars.map((item) => {
         return (
@@ -57,7 +63,7 @@ export default class Layout extends React.Component{
                             /> : item.selectedIcon }
             selected={this.state.selectedTab === item.key}
             badge={!item.badge? 0 : item.badge}
-            onPress={() => {Router.push(item.path)} }
+            onPress={this.handleTabClick.bind(this,item)}
             data-seed="logId"
           >
           </TabBar.Item>
