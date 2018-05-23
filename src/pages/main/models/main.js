@@ -12,7 +12,7 @@ export default {
   }),
   reducers:{
     addProList(state,{payload}){
-      return state.update("proList",v=>v.concat(payload))
+      return state.update("proList",v=>payload)
     },
     addCartList(state,{payload}){
       return state.update("cartList",v=>v.concat(payload))

@@ -4,6 +4,9 @@
 import React from "react"
 import Router from "umi/router"
 import {TabBar} from "antd-mobile"
+import {connect} from "dva"
+
+@connect(({main})=>(main.toJS()))
 export default class Layout extends React.Component{
 
   constructor(props){
@@ -47,7 +50,10 @@ export default class Layout extends React.Component{
   }
 
   getTabBar() {
-    return  this.state.bars.map((item) => {
+    const {bars} = this.state;
+    bars[1].badge = this.props.cartList.length;
+
+    return  bars.map((item) => {
         return (
           <TabBar.Item
             title={item.title}
