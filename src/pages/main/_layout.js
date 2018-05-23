@@ -75,19 +75,21 @@ export default class Layout extends React.Component{
   render(){
 
     return (
-      <div  style={{position: 'fixed', height: '100%', width: '100%'}}>
-        <div style={{position: 'fixed', height: 'calc(100% - 50px)', width: '100%', zIndex: 999}}>
+      <div>
+        <div style={{ marginBottom:50, width: '100%',overflow: "scroll"}} >
           {this.props.children}
         </div>
-        <TabBar
-          unselectedTintColor="#949494"
-          tintColor="#33A3F4"
-          barTintColor="white"
-          hidden={this.state.hidden}
-          style={{position: 'fixed', bottom: 0, width: '100%'}}
-        >
-          {this.getTabBar()}
-        </TabBar>
+        <div  style={{position: 'fixed',width: '100%',zIndex:999,bottom: 0}}>
+          <TabBar
+            unselectedTintColor="#949494"
+            tintColor="#33A3F4"
+            barTintColor="white"
+            hidden={this.state.hidden}
+            style={{position: 'fixed', bottom: 0, width: '100%'}}
+          >
+            {this.getTabBar()}
+          </TabBar>
+        </div>
       </div>
     )
   }

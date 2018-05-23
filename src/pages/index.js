@@ -1,5 +1,7 @@
 /**
  * Created by wyz on 2018/5/21.
  */
-import Main from "./main"
-export default Main;
+
+import Redirect from 'umi/redirect';
+
+export default ()=><Redirect to="/main" />

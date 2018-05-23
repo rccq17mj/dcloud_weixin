@@ -1,7 +1,7 @@
 /**
  * Created by wyz on 2018/5/22.
  */
-class HttpUtil {
+export default class HttpUtil {
 
   constructor(){
   }

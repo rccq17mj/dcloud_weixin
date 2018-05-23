@@ -8,7 +8,7 @@ import HttpConfig from "./httpConfig"
 class FetchUtil extends HttpConfig{
 
   constructor(opt){
-    super(opt)
+    super()
     this.req = {
       method: "GET",
       credentials: 'include',
@@ -64,13 +64,20 @@ class FetchUtil extends HttpConfig{
 
 }
 
+const data = Array.from(new Array(9)).map((_val, i) => ({
+  icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png',
+  text: `name${i}`,
+}));
 
 function dsyFetch(relativeUrl,opt){
   const util = new FetchUtil(opt)
-  const url = util.getUrl(relativeUrl);
-  const request = util.getRequest();
-  return new Promise(resolve,rejest){
-    fetch(url,request).then((res)=>{
+  //const url = util.getUrl(relativeUrl);
+  //const request = util.getRequest();
+  return new Promise((resolve,rejest)=>{
+    setTimeout( ()=>{
+      resolve(data)
+    },1000 )
+    /*fetch(url,request).then((res)=>{
       const res = util.packResponse(res);
       if(res.success){
         resolve(res)
@@ -81,8 +88,8 @@ function dsyFetch(relativeUrl,opt){
     .catch( err=>{
       Toast.fail("网络错误")
       reject(err)
-    } )
-  }
+    } )*/
+  })
 
 }
 
