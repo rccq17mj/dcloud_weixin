@@ -10,7 +10,7 @@
 >基于 redux、redux-saga 和 react-router 的轻量级前端框架。(Inspired by elm and choo)
 
 目录结构:
-`
+<pre>
 ├─.gitignore
 ├─.umirc.js //umi 的配置文件
 ├─.webpackrc.js //用来修改umi默认的webpack的配置文件
@@ -55,4 +55,4 @@
 |  |   ├─src__pages__main___layout.71d79839.async.js
 |  |   ├─umi.30bdffc2.js
 |  |   └umi.d41635cd.css
-`
+`<pre>
