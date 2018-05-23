@@ -3,12 +3,14 @@
 
 关于umi:
 >umi 是工具吗？是。但不仅仅是。我给 umi 的定位是开发框架，目前包含工具 + 路由，不包含数据和视图。 所以 umi[工具 + 路由] + dva[数据] + antd(-mobile)[视图]，很配哦。
+
 个人觉得:umi是一套web前端工程化的解决方案,并且是可更改配置的解决方案,其设计思维类似,input上面的defaultValue,你不写我用我默认的,你要写就用你的.
 
 关于dva:
 >基于 redux、redux-saga 和 react-router 的轻量级前端框架。(Inspired by elm and choo)
 
 目录结构:
+`
 ├─.gitignore
 ├─.umirc.js //umi 的配置文件
 ├─.webpackrc.js //用来修改umi默认的webpack的配置文件
@@ -53,3 +55,4 @@
 |  |   ├─src__pages__main___layout.71d79839.async.js
 |  |   ├─umi.30bdffc2.js
 |  |   └umi.d41635cd.css
+`
