@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "dva"
-import { Grid ,ActivityIndicator,Flex} from 'antd-mobile';
+import { Grid ,ActivityIndicator} from 'antd-mobile';
 
 @connect(
   (state)=>{
@@ -33,7 +33,6 @@ export default class Home extends React.Component {
 
         return (
           <div>
-
               <div className="sub-title" key="asdsad" >商品列表</div>
               <Grid data={data}
                     columnNum={3}

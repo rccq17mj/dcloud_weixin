@@ -5,7 +5,7 @@ import 'whatwg-fetch'
 import {Toast} from "antd-mobile"
 import HttpConfig from "./httpConfig"
 
-class FetchUtil extends HttpConfig{
+class HttpUtil extends HttpConfig{
 
   constructor(opt){
     super()
@@ -60,8 +60,6 @@ class FetchUtil extends HttpConfig{
     }
     return response;
   }
-
-
 }
 
 const data = Array.from(new Array(9)).map((_val, i) => ({
@@ -70,7 +68,7 @@ const data = Array.from(new Array(9)).map((_val, i) => ({
 }));
 
 function dsyFetch(relativeUrl,opt){
-  const util = new FetchUtil(opt)
+ // const util = new HttpUtil(opt)
   //const url = util.getUrl(relativeUrl);
   //const request = util.getRequest();
   return new Promise((resolve,rejest)=>{

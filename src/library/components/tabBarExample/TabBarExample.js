@@ -1,9 +1,8 @@
 import React from 'react';
 import { TabBar } from 'antd-mobile';
 import PropTypes from  'prop-types';
-import { Switch , Route } from 'react-router-dom';
+import Router from 'umi/router';
 import './TabBarExample.less';
-import router from 'umi/router';
 
 
 class TabBarExample extends React.Component {
@@ -11,22 +10,32 @@ class TabBarExample extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            iconStyle: { width: '22px', height: '22px'}
+            iconStyle: this.props.iconStyle? this.props.iconStyl : { width: '22px', height: '22px'},
+            selectedTab: this.props.selectedTab? this.props.selectedTab : this.props.tab[0].key
         };
+        this.props.tab.map((item) => {
+            if(item.path == this.props.children.props.location.pathname) {
+                this.state.selectedTab = item.key;
+            }
+        });
     }
 
+    //非路由页面获取页面组件
     getComponent(item) {
-        if(!item.path){
-            return React.createElement(item.component) ;
-        }
-        else{
-            window.console.log(item.path);
+        if(!item.path)
+            return item.component
+        else
             return null;
-        }
+    }
+
+    handleTabClick(item){
+        this.setState({selectedTab: item.key});
+        if(this.props.children)
+            Router.push(item.path);
     }
 
     getTabBar() {
-        return  this.props.router.map((item) => {
+        return  this.props.tab.map((item) => {
             return (
                     <TabBar.Item
                         title={item.title}
@@ -42,13 +51,8 @@ class TabBarExample extends React.Component {
                             /> : item.selectedIcon }
                         selected={this.state.selectedTab === item.key}
                         badge={!item.badge? 0 : item.badge}
-                        onPress={() => {
-                            this.setState({selectedTab: item.key});
-                            if (this.props.history)
-                                this.props.history.push(item.path)
-                        }}
-                        data-seed="logId"
-                    >
+                        onPress={this.handleTabClick.bind(this,item)}
+                        data-seed="logId">
                         {this.getComponent(item)}
                     </TabBar.Item>
                 )
@@ -56,25 +60,12 @@ class TabBarExample extends React.Component {
         )
     }
 
-    getRoute() {
-        return (<Switch>
-            {this.props.router.map((item,index) => {
-                if(item.path != null){
-                    if(item.path == this.props.history.location.pathname) {
-                        this.state.selectedTab = item.key;
-                    }
-                    return <Route path={item.path} exact component={item.component}></Route>
-                }
-            }
-            )}
-        </Switch>);
-    }
-
     render() {
+        const view = this.props.children? this.props.children : null;
         return (
             <div  style={{position: 'fixed', height: '100%', width: '100%'}}>
                 <div style={{position: 'fixed', height: 'calc(100% - 50px)', width: '100%', zIndex: 999}}>
-                    {this.getRoute()}
+                    {view}
                 </div>
                 <TabBar
                     unselectedTintColor="#949494"
@@ -92,7 +83,7 @@ class TabBarExample extends React.Component {
 
 TabBarExample.propTypes = {
     // 传入一组tab
-    router: [{
+    tab:[{
         // 菜单名
         title: PropTypes.string.isRequired,
         /**
@@ -117,12 +108,18 @@ TabBarExample.propTypes = {
         ]),
         // 路由地址，如果不使用路由方式则不需要此项参数
         path: PropTypes.string,
-        // 渲染页面
+        // 渲染页面,必须使用component: <element></element> 格式
         component: PropTypes.element,
         // 唯一码
         key: PropTypes.string.isRequired,
         // 消息提醒（数字）
         badge: PropTypes.number,
-    }]
+    }],
+    //路由页面index
+    children:  PropTypes.object,
+    // / iconStyle: { width: '22px', height: '22px'}
+    iconStyle:  PropTypes.string,
+    //选中项key,默认第一个
+    selectedTab:  PropTypes.string
 }
 export default TabBarExample;

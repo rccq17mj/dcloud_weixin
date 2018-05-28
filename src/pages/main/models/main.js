@@ -2,7 +2,7 @@
  * Created by wyz on 2018/5/22.
  */
 import {fromJS,List} from "immutable"
-import {fetch} from "dsykit"
+import {HttpUtil} from "utils"
 
 export default {
   namespace:"main",
@@ -20,7 +20,7 @@ export default {
   },
   effects:{
     *fetchProList({payload},{call,put}){
-      const res = yield call(fetch,{url:"proList"});
+      const res = yield call(HttpUtil,{url:"proList"});
       yield put({type:"addProList",payload:res})
     }
   }

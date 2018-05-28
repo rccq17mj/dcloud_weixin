@@ -17,12 +17,19 @@
     "color-text-base": "#333"
   },
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "umi dev",
     "build": "webpack",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
     "react-app-rewired": "^1.5.2"
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://",
+      "changeOrigin": true,
+      "pathRewrite": { "^/" : "" }
+    }
   }
 }

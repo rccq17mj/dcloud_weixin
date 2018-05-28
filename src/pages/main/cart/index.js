@@ -4,7 +4,7 @@ import {connect} from "dva"
 @connect(({main})=>(main.toJS()))
 class Cart extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     render() {

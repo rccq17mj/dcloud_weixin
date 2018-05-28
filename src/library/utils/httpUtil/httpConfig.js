@@ -1,7 +1,7 @@
 /**
  * Created by wyz on 2018/5/22.
  */
-export default class HttpUtil {
+export default class HttpConfig {
 
   constructor(){
   }
