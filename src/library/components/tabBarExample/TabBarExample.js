@@ -9,15 +9,20 @@ class TabBarExample extends React.Component {
 
     constructor(props) {
         super(props);
+
+        let selectedTab = this.props.tab[0].key;
+        this.props.tab.map((item) => {
+            if(item.path === this.props.children.props.location.pathname) {
+                selectedTab = item.key;
+                return false;
+            }
+            return true;
+        });
+
         this.state = {
             iconStyle: this.props.iconStyle? this.props.iconStyl : { width: '22px', height: '22px'},
-            selectedTab: this.props.selectedTab? this.props.selectedTab : this.props.tab[0].key
+            selectedTab: this.props.selectedTab? this.props.selectedTab : selectedTab
         };
-        this.props.tab.map((item) => {
-            if(item.path == this.props.children.props.location.pathname) {
-                this.state.selectedTab = item.key;
-            }
-        });
     }
 
     //非路由页面获取页面组件

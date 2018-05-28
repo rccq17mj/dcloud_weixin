@@ -11,6 +11,7 @@ import { Grid ,ActivityIndicator} from 'antd-mobile';
   }
 )
 export default class Home extends React.Component {
+
     constructor(props) {
         super(props);
     }

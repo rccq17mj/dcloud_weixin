@@ -1,7 +1,8 @@
 /**
  * Created by wyz on 2018/5/21.
  */
-import 'whatwg-fetch'
+// import 'whatwg-fetch'
+import "dva/fetch"
 import {Toast} from "antd-mobile"
 import HttpConfig from "./httpConfig"
 
@@ -68,27 +69,27 @@ const data = Array.from(new Array(9)).map((_val, i) => ({
 }));
 
 function dsyFetch(relativeUrl,opt){
- // const util = new HttpUtil(opt)
-  //const url = util.getUrl(relativeUrl);
-  //const request = util.getRequest();
-  return new Promise((resolve,rejest)=>{
-    setTimeout( ()=>{
-      resolve(data)
-    },1000 )
-    /*fetch(url,request).then((res)=>{
-      const res = util.packResponse(res);
+ const util = new HttpUtil(opt);
+ // const url = util.getUrl(relativeUrl);
+ const url = relativeUrl.url;
+ const request = util.getRequest();
+  return new Promise((resolve,reject)=>{
+    debugger
+    fetch(url,request).then((res)=>{
+      // res = util.packResponse(res);
+        const body = res.body;
+        console.log("body",body)
       if(res.success){
         resolve(res)
       }else{
-        reject(res)
+        reject(res);
       }
     })
     .catch( err=>{
       Toast.fail("网络错误")
-      reject(err)
-    } )*/
+        reject(err)
+    })
   })
-
 }
 
 export default dsyFetch

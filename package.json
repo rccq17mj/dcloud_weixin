@@ -5,6 +5,7 @@
   "dependencies": {
     "dva": "^2.2.3",
     "immutable": "^3.8.2",
+    "mockjs": "^1.0.1-beta3",
     "react-iframe": "^1.1.0",
     "react-scripts": "^1.1.4",
     "superagent": "^3.8.3",
@@ -29,7 +30,9 @@
     "/api": {
       "target": "http://",
       "changeOrigin": true,
-      "pathRewrite": { "^/" : "" }
+      "pathRewrite": {
+        "^/": ""
+      }
     }
   }
 }

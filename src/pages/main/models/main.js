@@ -20,7 +20,7 @@ export default {
   },
   effects:{
     *fetchProList({payload},{call,put}){
-      const res = yield call(HttpUtil,{url:"proList"});
+      const res = yield call(HttpUtil,{url:"products.json"});
       yield put({type:"addProList",payload:res})
     }
   }
