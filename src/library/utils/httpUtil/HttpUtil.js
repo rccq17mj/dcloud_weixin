@@ -74,7 +74,6 @@ function dsyFetch(relativeUrl,opt){
  const url = relativeUrl.url;
  const request = util.getRequest();
   return new Promise((resolve,reject)=>{
-    debugger
     fetch(url,request).then((res)=>{
       // res = util.packResponse(res);
         const body = res.body;
