@@ -76,7 +76,6 @@ function dsyFetch(relativeUrl,opt){
   return new Promise((resolve,reject)=>{
     //debugger
     fetch(url,request).then((res)=>{
-      console.log("res",res)
       // res = util.packResponse(res);
       if(res.status == 200){
         return res.json()
@@ -91,11 +90,6 @@ function dsyFetch(relativeUrl,opt){
       Toast.fail("网络错误")
         reject(err)
     })
-    //fetch("http://httpbin.org/get").then(function(response) {
-    //  return response.json()
-    //}).then(res=>{
-    //  console.log("res",res)
-    //});
   })
 }
 
