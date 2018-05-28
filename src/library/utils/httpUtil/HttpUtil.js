@@ -1,8 +1,8 @@
 /**
  * Created by wyz on 2018/5/21.
  */
-// import 'whatwg-fetch'
-import "dva/fetch"
+ import 'whatwg-fetch'
+//import "dva/fetch"
 import {Toast} from "antd-mobile"
 import HttpConfig from "./httpConfig"
 
@@ -74,21 +74,28 @@ function dsyFetch(relativeUrl,opt){
  const url = relativeUrl.url;
  const request = util.getRequest();
   return new Promise((resolve,reject)=>{
-    debugger
+    //debugger
     fetch(url,request).then((res)=>{
+      console.log("res",res)
       // res = util.packResponse(res);
-        const body = res.body;
-        console.log("body",body)
-      if(res.success){
-        resolve(res)
+      if(res.status == 200){
+        return res.json()
       }else{
         reject(res);
       }
     })
+      .then(res=>{
+        resolve(res.list)
+      })
     .catch( err=>{
       Toast.fail("网络错误")
         reject(err)
     })
+    //fetch("http://httpbin.org/get").then(function(response) {
+    //  return response.json()
+    //}).then(res=>{
+    //  console.log("res",res)
+    //});
   })
 }
 
