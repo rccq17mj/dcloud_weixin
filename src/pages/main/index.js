@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "dva"
-import { Grid ,ActivityIndicator} from 'antd-mobile';
+import { Grid ,ActivityIndicator, Button} from 'antd-mobile';
 
 @connect(
   (state)=>{
@@ -34,18 +34,19 @@ export default class Home extends React.Component {
 
         return (
           <div>
-              <div className="sub-title" key="asdsad" >商品列表</div>
-              <Grid data={data}
-                    columnNum={3}
-                    renderItem={(dataItem,k) => (
-                        <div style={{ padding: '12.5px' }} key={k} onClick={ this.handleProClick.bind(this,dataItem) }>
-                          <img src={dataItem.icon} style={{ width: '75px', height: '75px' }} alt="" />
-                          <div style={{ color: '#888', fontSize: '14px', marginTop: '12px' }}>
-                            <span>{dataItem.text}</span>
-                          </div>
-                        </div>
-                      )}
-              />
+              {/*<div className="sub-title" key="asdsad" >商品列表</div>*/}
+              {/*<Grid data={data}*/}
+                    {/*columnNum={3}*/}
+                    {/*renderItem={(dataItem,k) => (*/}
+                        {/*<div style={{ padding: '12.5px' }} key={k} onClick={ this.handleProClick.bind(this,dataItem) }>*/}
+                          {/*<img src={dataItem.icon} style={{ width: '75px', height: '75px' }} alt="" />*/}
+                          {/*<div style={{ color: '#888', fontSize: '14px', marginTop: '12px' }}>*/}
+                            {/*<span>{dataItem.text}</span>*/}
+                          {/*</div>*/}
+                        {/*</div>*/}
+                      {/*)}*/}
+                  <Button type="primary">primary</Button>
+                  <Button type="primary" disabled>primary disabled</Button>
           </div>
         )
 

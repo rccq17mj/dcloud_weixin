@@ -20,7 +20,7 @@ class TabBarExample extends React.Component {
         });
 
         this.state = {
-            iconStyle: this.props.iconStyle? this.props.iconStyl : { width: '22px', height: '22px'},
+            iconStyle: this.props.iconStyle? this.props.iconStyle : { width: '22px', height: '22px'},
             selectedTab: this.props.selectedTab? this.props.selectedTab : selectedTab
         };
     }

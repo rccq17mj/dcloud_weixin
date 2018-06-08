@@ -14,10 +14,6 @@
     "umi-plugin-dva": "^0.7.2",
     "whatwg-fetch": "^2.0.4"
   },
-  "theme": {
-    "brand-primary": "#e7572f",
-    "color-text-base": "#333"
-  },
   "scripts": {
     "start": "umi dev",
     "build": "webpack",
