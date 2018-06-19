@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from "dva"
 import { Grid ,ActivityIndicator, Button} from 'antd-mobile';
+import {Flex} from "antd-mobile"
+import logo from '../../assets/images/logo.png'
 
 @connect(
   (state)=>{
@@ -45,8 +47,10 @@ export default class Home extends React.Component {
                           {/*</div>*/}
                         {/*</div>*/}
                       {/*)}*/}
-                  <Button type="primary">primary</Button>
-                  <Button type="primary" disabled>primary disabled</Button>
+              <Flex  justify="between">
+                  <Flex.Item><img  style={{margin: 'auto',width:'30%',display: 'block',marginTop: '50%'}} src={logo} logo /></Flex.Item>
+              </Flex>
+
           </div>
         )
 

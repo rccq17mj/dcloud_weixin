@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Flex} from "antd-mobile"
 import {connect} from "dva"
 
 @connect(({main})=>(main.toJS()))
@@ -11,14 +12,16 @@ class Cart extends Component {
         const data = this.props.cartList || []
         return (
            <div>
-               cart
-               <ul>
-                   {data.map((v,k)=>{
-                       return (
-                         <li key={k}>{v.text}</li>
-                       )
-                   })}
-               </ul>
+               <Flex  justify="between" style={{marginTop: '50%'}}>
+                   <Flex.Item><p style={{textAlign:'center',width:'100%'}}>cart</p></Flex.Item>
+               </Flex>
+               {/*<ul>*/}
+                   {/*{data.map((v,k)=>{*/}
+                       {/*return (*/}
+                         {/*<li key={k}>{v.text}</li>*/}
+                       {/*)*/}
+                   {/*})}*/}
+               {/*</ul>*/}
            </div>
 
         )

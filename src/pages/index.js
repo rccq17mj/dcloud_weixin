@@ -5,5 +5,6 @@
 import Redirect from 'umi/redirect';
 
 import "../mock.js"
+import "../index.css"
 
 export default ()=><Redirect to="/main" />

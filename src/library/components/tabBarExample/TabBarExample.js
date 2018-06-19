@@ -41,19 +41,21 @@ class TabBarExample extends React.Component {
 
     getTabBar() {
         return  this.props.tab.map((item) => {
+            let selecticon = <i class={this.state.selectedTab === item.key? 'am-tab-bar-tab-title-select' : null}>{item.selectedIcon}</i>;
+            let icon = <i class={this.state.icon === item.key? 'am-tab-bar-tab-title-select' : null}>{item.icon}</i>;
             return (
                     <TabBar.Item
-                        title={item.title}
+                        title={<div class={this.state.selectedTab === item.key? 'am-tab-bar-tab-title-select' : null}>{item.title}</div>}
                         key={item.key}
                         icon={ typeof(item.icon) === 'string' ? <div style={ Object.assign({}, this.state.iconStyle, {
                             background: item.icon
                         })}
-                        /> : item.icon }
+                        /> : icon }
                         selectedIcon={typeof(item.selectedIcon) === 'string' ?
                             <div style={ Object.assign({}, this.state.iconStyle, {
                                 background: item.selectedIcon
                             })}
-                            /> : item.selectedIcon }
+                            /> : selecticon }
                         selected={this.state.selectedTab === item.key}
                         badge={!item.badge? 0 : item.badge}
                         onPress={this.handleTabClick.bind(this,item)}
@@ -68,7 +70,7 @@ class TabBarExample extends React.Component {
     render() {
         const view = this.props.children? this.props.children : null;
         return (
-            <div  style={{position: 'fixed', height: '100%', width: '100%'}}>
+            <div class="dcloud-tab-bar"  style={{position: 'fixed', height: '100%', width: '100%'}}>
                 <div style={{position: 'fixed', height: 'calc(100% - 50px)', width: '100%', zIndex: 999}}>
                     {view}
                 </div>
